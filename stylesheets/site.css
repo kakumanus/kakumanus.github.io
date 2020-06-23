@@ -1,0 +1,202 @@
+:root {
+  --nav-color: #073072;
+  --main-color1:#063F96;
+  --main-color2: rgba(6, 63, 150, 0.25);
+  --text-color1: #ACF1FF;
+  --text-color2: #E3FFF3;
+  --footer-color: #6487BE; }
+
+@font-face {
+  font-family: "Metropolis";
+  font-weight: normal;
+  font-style: normal;
+  src: url("stylesheets/Metropolis/Metropolis-Regular.woff") format("woff"); }
+
+@font-face {
+  font-family: "Metropolis";
+  font-weight: bold;
+  font-style: normal;
+  src: url("stylesheets/Metropolis/Metropolis-Bold.woff") format("woff"); }
+
+::-moz-selection {
+  background-color: #352e7e;
+  color: #fff; }
+
+::selection {
+  background-color: #352e7e;
+  color: #fff; }
+
+html {
+  scroll-behavior: smooth; }
+
+.navbar-default {
+  background: var(--nav-color);
+  height: 75px;
+  border: none; }
+
+.navbar-brand .span {
+  color: var(--text-color1); }
+
+.navbar-brand img {
+  height: 45px; }
+
+.nav-link {
+  color: var(--text-color1);
+  font-family: Metropolis;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 1.4em;
+  margin-left: 35px;
+  position: relative; }
+
+.nav-link:before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 3px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--text-color1);
+  visibility: hidden;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out; }
+
+.nav-link:hover:before {
+  visibility: visible;
+  width: 100%; }
+
+.nav-link:hover {
+  color: var(--text-color1); }
+
+#header {
+  background: var(--main-color1);
+  height: inherit;
+  padding-top: 7.75vw;
+  padding-bottom: 7.75vw; }
+  #header h1 {
+    color: var(--text-color2);
+    font-family: Metropolis;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 5em; }
+  #header h3 {
+    color: var(--text-color1);
+    font-family: Metropolis;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 1.4em; }
+  #header button {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: transparent;
+    border: solid 3px var(--text-color1);
+    color: var(--text-color1);
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-family: Metropolis;
+    font-size: 2.5vh;
+    font-weight: bold;
+    -webkit-transition-duration: 0.4s;
+            transition-duration: 0.4s;
+    cursor: pointer; }
+  #header button:hover {
+    background-color: var(--text-color1);
+    color: var(--main-color1); }
+
+#about-me {
+  background: var(--main-color2);
+  height: inherit;
+  padding-top: 7.5vw;
+  padding-bottom: 2vw; }
+  #about-me h2 {
+    color: var(--nav-color);
+    font-family: Metropolis;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 3em; }
+  #about-me p {
+    color: var(--nav-color);
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1.25em; }
+  #about-me hr {
+    border: solid 2.5px var(--nav-color); }
+
+#projects {
+  background: var(--main-color1);
+  height: inherit;
+  padding-top: 7.5vw;
+  padding-bottom: 2vw; }
+  #projects h2 {
+    color: var(--text-color2);
+    font-family: Metropolis;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 3em; }
+  #projects hr {
+    border: solid 2.5px var(--text-color2); }
+  #projects .card-img {
+    opacity: .5;
+    height: 100%;
+    -webkit-transition-duration: 0.4s;
+            transition-duration: 0.4s;
+    cursor: pointer; }
+  #projects .card:hover .card-img {
+    opacity: .15; }
+  #projects .card-title {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1.75em;
+    color: var(--text-color2);
+    height: 100%; }
+  #projects .card-title:before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 3px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--text-color1);
+    visibility: hidden;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out; }
+  #projects .card-title:hover:before {
+    visibility: visible;
+    width: 100%; }
+
+#experience {
+  background: var(--main-color2);
+  height: inherit;
+  padding-top: 7.5vw;
+  padding-bottom: 2vw; }
+  #experience h2 {
+    color: var(--nav-color);
+    font-family: Metropolis;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 3em; }
+  #experience hr {
+    border: solid 2.5px var(--nav-color); }
+  #experience .card-img {
+    width: 200px; }
+  #experience .card-title {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1.75em;
+    color: var(--nav-color);
+    height: 100%; }
+  #experience .card {
+    background-color: rgba(169, 169, 169, 0.32); }
+
+#footer {
+  height: 128px;
+  background-color: var(--footer-color); }
+  #footer h5, #footer h6 {
+    color: var(--text-color2);
+    font-family: Metropolis;
+    font-style: normal;
+    font-weight: normal; }
