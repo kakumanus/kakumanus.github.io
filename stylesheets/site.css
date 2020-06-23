@@ -10,13 +10,13 @@
   font-family: "Metropolis";
   font-weight: normal;
   font-style: normal;
-  src: url("stylesheets/Metropolis/Metropolis-Regular.woff") format("woff"); }
+  src: url("../stylesheets/Metropolis/Metropolis-Regular.woff") format("woff"); }
 
 @font-face {
   font-family: "Metropolis";
   font-weight: bold;
   font-style: normal;
-  src: url("stylesheets/Metropolis/Metropolis-Bold.woff") format("woff"); }
+  src: url("../stylesheets/Metropolis/Metropolis-Bold.woff") format("woff"); }
 
 ::-moz-selection {
   background-color: #352e7e;
