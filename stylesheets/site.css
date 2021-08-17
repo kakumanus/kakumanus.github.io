@@ -2,6 +2,7 @@
   --nav-color: #073072;
   --main-color1:#063F96;
   --main-color2: rgba(6, 63, 150, 0.25);
+  --main-color3: rgba(6, 63, 150, 0.80);
   --text-color1: #ACF1FF;
   --text-color2: #E3FFF3;
   --footer-color: #6487BE; }
@@ -69,7 +70,12 @@ html {
   color: var(--text-color1); }
 
 #header {
-  background: var(--main-color1);
+  background: 
+    linear-gradient(
+      var(--main-color3),
+      var(--main-color1)
+    ),
+    url("../images/cbus.jpg") no-repeat center center; background-size: cover;
   height: inherit;
   padding-top: 7.75vw;
   padding-bottom: 7.75vw; }
