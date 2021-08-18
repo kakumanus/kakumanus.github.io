@@ -196,11 +196,27 @@ html {
     color: var(--nav-color);}
   #experience .card {
     background-color: rgba(169, 169, 169, 0.32); }
+  #experience .accordion-button:not(.collapsed) {
+    color: var(--text-color1);
+    background-color: var(--main-color1);
+    font-weight: bold;
+    font-family: Inter;}
+  #experience .accordion-button{
+    color: var(--text-color2);
+    background-color: var(--main-color3);
+    font-weight: normal;
+    font-family: Inter;}
+  #experience .accordion-body{
+    background-color: var(--main-color2);
+    color: var(--nav-color);
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;}
 
 #footer {
   height: 128px;
   background-color: var(--footer-color); }
-  #footer h5, #footer h6 {
+  #footer h5, #footer h6, #footer a{
     color: var(--text-color2);
     font-family: Metropolis;
     font-style: normal;
