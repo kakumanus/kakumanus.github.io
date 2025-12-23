@@ -1,0 +1,75 @@
+---
+import profilePhoto from '../../assets/SK.jpg';
+---
+
+<section class="about">
+    <div class="about-container">
+        <div class="about-content">
+            <h2>More About Me.</h2>
+
+            <p>
+                I studied computer science and worked as a full-stack software engineer for nearly four years,
+                but I've always been drawn to cities: how people move through them, who they serve, and who
+                they leave out. Now I'm pursuing a masters in Urban Spatial Analytics at Penn, where I'm
+                learning to use data, spatial analysis, and urban research to support better decision-making
+                around housing and transportation access.
+            </p>
+
+            <p>
+                I don't believe technology should be built in a vacuum. Being a good engineer or technologist
+                means knowing how to work with stakeholders and communities, especially when it comes to
+                the urban systems that shape daily life. That mindset, blending technical work with planning
+                and public impact, is what's driving the next chapter of my career.
+            </p>
+
+            <h3 class="contact">
+                Want to chat? Contact me <a href="mailto:sujankakumanu@gmail.com">here</a> or on
+                <a href="https://linkedin.com/in/sujankakumanu" target="_blank">LinkedIn↗</a>.
+            </h3>
+        </div>
+
+        <img src={profilePhoto.src} alt="Sujan's profile photo" />
+    </div>
+</section>
+
+<style>
+    .about {
+        background: #000;
+        color: #fff;
+        padding: 2rem 2rem;
+    }
+
+    .about-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 400px;
+        gap: 4rem;
+        align-items: start;
+    }
+    .contact {
+        margin-top: 2.5rem;
+        font-family: 'IBM Plex Mono', serif;
+    }
+
+    img {
+        width: 368px;
+        border-radius: 8px;
+    }
+
+    @media (max-width: 768px) {
+        .about {
+            padding: 4rem 1.5rem;
+        }
+
+        .about-container {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        img {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+    }
+</style>
