@@ -1,9 +1,10 @@
 ---
 import phillySkyline from '../../assets/philly-sketch.png';
+import { Image } from 'astro:assets';
 ---
 
-<section class="intro">
-    <img src={phillySkyline.src} alt="" class="skyline" />
+<section class="section intro" id="intro">
+    <Image src={phillySkyline} alt="" class="skyline" loading="eager"/>
     <h1>
         Hello! My name is <span class="highlight">Sujan</span>. I'm a software
         engineer and urban spatial analytics masters student.
@@ -16,7 +17,6 @@ import phillySkyline from '../../assets/philly-sketch.png';
         min-height: 50vh;
         display: flex;
         align-items: center;
-        padding: 4rem 2rem;
         background: #f5f5f5;
     }
 
@@ -24,7 +24,8 @@ import phillySkyline from '../../assets/philly-sketch.png';
         position: absolute;
         bottom: 0;
         left: 0;
-        height: 70%;
+        width: 100%; /* Add this */
+        height: 100%;
         object-fit: cover;
         object-position: bottom;
         opacity: 0.2;
@@ -33,7 +34,7 @@ import phillySkyline from '../../assets/philly-sketch.png';
     .highlight {
         color: #073072;
         text-decoration: underline 8px #073072;
-        font-weight: 700;
+        font-weight: 500;
     }
 
     @media (max-width: 768px) {
