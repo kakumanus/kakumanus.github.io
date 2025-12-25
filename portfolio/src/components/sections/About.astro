@@ -1,8 +1,9 @@
 ---
 import profilePhoto from '../../assets/SK.jpg';
+import { Image } from 'astro:assets';
 ---
 
-<section class="about">
+<section class="section about" id="about">
     <div class="about-container">
         <div class="about-content">
             <h2>More About Me.</h2>
@@ -28,7 +29,7 @@ import profilePhoto from '../../assets/SK.jpg';
             </h3>
         </div>
 
-        <img src={profilePhoto.src} alt="Sujan's profile photo" />
+        <Image src={profilePhoto} alt="Sujan Kakumanu" class="profile-image" loading="eager"/>
     </div>
 </section>
 
@@ -36,11 +37,9 @@ import profilePhoto from '../../assets/SK.jpg';
     .about {
         background: #000;
         color: #fff;
-        padding: 2rem 2rem;
     }
 
     .about-container {
-        max-width: 1200px;
         margin: 0 auto;
         display: grid;
         grid-template-columns: 1fr 400px;
@@ -52,12 +51,13 @@ import profilePhoto from '../../assets/SK.jpg';
         font-family: 'IBM Plex Mono', serif;
     }
 
-    img {
-        width: 368px;
+    .profile-image {
+        width: 23rem;
+        height: 23rem;
         border-radius: 8px;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 968px) {
         .about {
             padding: 4rem 1.5rem;
         }
