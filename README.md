@@ -14,7 +14,7 @@ Personal portfolio and professional showcase built with **Astro**, **Vue.js**, a
 * **Deployment:** GitHub Actions to GitHub Pages.
 * **Fonts:** IBM Plex Serif, IBM Plex Mono, and Inter.
 
-## 📂 Project Structure
+## 📂 Project Structure.
 
 Most of the code lives in the `/portfolio` subdirectory.
 
