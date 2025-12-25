@@ -4,5 +4,6 @@ import vue from '@astrojs/vue';
 
 export default defineConfig({
     site: 'https://sujankakumanu.com',
+    base: '/',
     integrations: [vue()],
 });
