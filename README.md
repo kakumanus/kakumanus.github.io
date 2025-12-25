@@ -1,4 +1,4 @@
-# [sujankakumanu.com](https://kakumanus.github.io/portfolio/)
+# [sujankakumanu.com](https://sujankakumanu.com)
 
 Personal portfolio and professional showcase built with **Astro**, **Vue.js**, and **CSS**. This site is designed to be a high-performance, minimalist hub for my software engineering projects and academic background.
 
