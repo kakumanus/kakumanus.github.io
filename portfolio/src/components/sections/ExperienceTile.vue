@@ -1,6 +1,6 @@
 <template>
   <div class="experience-tile">
-    <img :src="experience.image" :alt="experience.imageAlt" class="background-image" />
+    <img :src="experience.image.src" :alt="experience.imageAlt" class="background-image" />
     <div class="overlay"></div>
 
     <div class="content">

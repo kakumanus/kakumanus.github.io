@@ -1,0 +1,59 @@
+---
+const { figmaUrl = "https://www.figma.com/design/rBqHlIVL6pXXjEuNgGqay5/Portfolio-v3-2", githubUrl = "https://github.com/kakumanus/kakumanus.github.io" } = Astro.props;
+---
+
+<footer class="footer">
+    <div class="footer-content">
+        <p>
+            <a href={figmaUrl} target="_blank" rel="noopener noreferrer" class="footer-link">Designed</a>
+            and
+            <a href={githubUrl} target="_blank" rel="noopener noreferrer" class="footer-link">Created</a>
+            by Sujan Kakumanu 2025.
+        </p>
+    </div>
+</footer>
+
+<style>
+    .footer {
+        width: 100%;
+        background: #f5f5f5; /* Matches your header background */
+        border-top: 1px solid #e0e0e0;
+        padding: 1rem 0;
+        margin-top: auto; /* Pushes to bottom if using flex-col on body */
+    }
+
+    .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    p {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 0.9rem;
+        color: #555;
+        letter-spacing: 0.02em;
+    }
+
+    .footer-link {
+        color: #073072;
+        text-decoration: none;
+        font-weight: 600;
+        border-bottom: 2px solid transparent;
+        transition: all 0.3s ease-out;
+        padding-bottom: 2px;
+    }
+
+    .footer-link:hover {
+        color: #0250bb;
+        border-bottom-color: #0250bb;
+    }
+
+    @media (max-width: 768px) {
+        .footer-content {
+            padding: 0 2rem;
+        }
+    }
+</style>

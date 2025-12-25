@@ -4,6 +4,7 @@ import Header from '../components/layout/Header.astro'
 import Intro from '../components/sections/Intro.astro'
 import About from '../components/sections/About.astro'
 import ExperienceSection from "../components/sections/ExperienceSection.vue"
+import Footer from "../components/layout/Footer.astro";
 ---
 
 <Layout>
@@ -13,4 +14,5 @@ import ExperienceSection from "../components/sections/ExperienceSection.vue"
 		<About />
 		<ExperienceSection client:load />
 	</main>
+	<Footer />
 </Layout>

@@ -25,13 +25,17 @@
 import { ref } from 'vue';
 import ExperienceTile from './ExperienceTile.vue';
 import ExperienceDetail from './ExperienceDetail.vue';
+import pennImg from '../../assets/penn.jpg';
+import jpmcImg from '../../assets/jpmc.jpg';
+import aaoImg from '../../assets/AAO.png';
+import blockOImg from '../../assets/block_o.png';
 
 const selectedExperience = ref(null);
 
 const experiences = [
   {
     id: 1,
-    image: '/src/assets/penn.jpg',
+    image: pennImg,
     color:'#990000',
     imageAlt: 'University of Pennsylvania',
     title: 'Master of Urban Spatial Analytics',
@@ -43,7 +47,7 @@ const experiences = [
   {
     id: 2,
     color:'#996c48',
-    image: '/src/assets/jpmc.jpg',
+    image: jpmcImg,
     imageAlt: 'JPMorgan Chase',
     title: 'Software Engineer I & II',
     organization: 'JPMorgan Chase',
@@ -54,7 +58,7 @@ const experiences = [
   {
     id: 3,
     color:'#388cbb',
-    image: '/src/assets/AAO.png',
+    image: aaoImg,
     imageAlt: 'All Aboard Ohio',
     title: 'Board Member & Secretary',
     organization: 'All Aboard Ohio',
@@ -65,7 +69,7 @@ const experiences = [
   {
     id: 4,
     color: '#70071c',
-    image: '/src/assets/block_o.png',
+    image: blockOImg,
     imageAlt: 'The Ohio State University',
     title: 'B.S Computer Science & Engineering',
     organization: 'The Ohio State University',
