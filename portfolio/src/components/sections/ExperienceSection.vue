@@ -110,9 +110,16 @@ const selectExperience = (exp) => {
   .experience-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+  .experience {
+    padding: 2.5rem 3rem;
+  }
 }
 
 @media (max-width: 768px) {
+  .experience {
+    padding: 2rem 1.5rem;
+  }
+
   .experience-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
