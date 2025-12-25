@@ -23,8 +23,8 @@
 
 <script setup>
 import { ref } from 'vue';
-import ExperienceTile from './ExperienceTile.vue';
-import ExperienceDetail from './ExperienceDetail.vue';
+import ExperienceTile from '../ui/ExperienceTile.vue';
+import ExperienceDetail from '../ui/ExperienceDetail.vue';
 import pennImg from '../../assets/penn.jpg';
 import jpmcImg from '../../assets/jpmc.jpg';
 import aaoImg from '../../assets/AAO.png';
