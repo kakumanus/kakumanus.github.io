@@ -25,59 +25,9 @@
 import { ref } from 'vue';
 import ExperienceTile from '../ui/ExperienceTile.vue';
 import ExperienceDetail from '../ui/ExperienceDetail.vue';
-import pennImg from '../../assets/penn.jpg';
-import jpmcImg from '../../assets/jpmc.jpg';
-import aaoImg from '../../assets/AAO.png';
-import blockOImg from '../../assets/block_o.png';
+import { experiences } from '../../constants.js'
 
 const selectedExperience = ref(null);
-
-const experiences = [
-  {
-    id: 1,
-    image: pennImg,
-    color:'#990000',
-    imageAlt: 'University of Pennsylvania',
-    title: 'Master of Urban Spatial Analytics',
-    organization: 'University of Pennsylvania',
-    department: 'Weitzman School of Design',
-    dates: 'Class of 2026',
-    description: 'DESCRIPTION',
-  },
-  {
-    id: 2,
-    color:'#996c48',
-    image: jpmcImg,
-    imageAlt: 'JPMorgan Chase',
-    title: 'Software Engineer I & II',
-    organization: 'JPMorgan Chase',
-    department: 'Consumer Bank Sales, Incentives, & Growth',
-    dates: '2022-25',
-    description: 'DESCRIPTION',
-  },
-  {
-    id: 3,
-    color:'#388cbb',
-    image: aaoImg,
-    imageAlt: 'All Aboard Ohio',
-    title: 'Board Member & Secretary',
-    organization: 'All Aboard Ohio',
-    department: 'Board of Directors, Executive Committee',
-    dates: '2023-25',
-    description: 'DESCRIPTION',
-  },
-  {
-    id: 4,
-    color: '#70071c',
-    image: blockOImg,
-    imageAlt: 'The Ohio State University',
-    title: 'B.S Computer Science & Engineering',
-    organization: 'The Ohio State University',
-    department: 'College of Engineering',
-    dates: 'Class of 2021',
-    description: 'DESCRIPTION',
-  }
-];
 
 const selectExperience = (exp) => {
   selectedExperience.value = exp;
