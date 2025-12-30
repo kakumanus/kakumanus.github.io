@@ -185,7 +185,7 @@ const previousImage = () => {
   margin: 0;
 }
 
-.about {
+p.about {
   font-family: 'Inter', sans-serif;
 }
 
@@ -297,6 +297,7 @@ const previousImage = () => {
 }
 
 .skills-tags {
+  font-family: 'IBM Plex Mono', monospace;
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
