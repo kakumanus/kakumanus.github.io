@@ -43,16 +43,11 @@ export const experiences: Experience[] = [
         organization: 'University of Pennsylvania',
         department: 'Weitzman School of Design',
         dates: 'Class of 2026',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, ' +
-            'sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ' +
-            'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ' +
-            'ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit ' +
-            'in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur ' +
-            'sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt ' +
-            'mollit anim id est laborum.',
-        images: [pennImg.src, jpmcImg.src, aaoImg.src, blockOImg.src],
+        description: 'Coursework emphasizes spatial data science and urban planning/policy, including Public Policy Analytics (predictive data science in R), Geospatial Analysis in Python, Statistical and Data Mining Methods, Community Engagement, and Housing, Community, and Economic Development (HCED).',
+        skills: ['R', 'Python', 'Spatial Statistics', 'Community Engagement', 'Housing Policy'],
+        images: [pennImg.src],
         buttonLink: 'https://sujankakumanu.com/musa-portfolio',
-        buttonText: 'My MUSA Portfolio',
+        buttonText: 'My MUSA Portfolio ⧉',
     },
     {
         id: 2,
@@ -63,13 +58,8 @@ export const experiences: Experience[] = [
         organization: 'JPMorgan Chase',
         department: 'Consumer Bank Sales, Incentives, & Growth',
         dates: '2022-25',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, ' +
-            'sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ' +
-            'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ' +
-            'ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit ' +
-            'in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur ' +
-            'sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt ' +
-            'mollit anim id est laborum.',
+        description: 'Worked as a full-stack engineer on a web application used by 5,000+ Chase branch leaders to improve branch performance and growth. Partnered with cross-functional teams in an Agile environment, led scrum ceremonies, and drove continuous improvement in team practices. Mentored interns, organized professional development programs, and led panels to strengthen early-career engagement across the firm.',
+        skills: ['Vue.js', 'Spring Boot', 'API Development', 'Database Design', 'Airflow', 'Architecture', 'Agile Development'],
         images: [jpmcCar1.src, jpmcCar2.src, jpmcCar3.src],
     },
     {
@@ -81,13 +71,9 @@ export const experiences: Experience[] = [
         organization: 'All Aboard Ohio',
         department: 'Board of Directors, Executive Committee',
         dates: '2023-25',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, ' +
-            'sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ' +
-            'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ' +
-            'ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit ' +
-            'in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur ' +
-            'sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt ' +
-            'mollit anim id est laborum.',
+        description: 'Collaborated with board members to develop a new mission, organizational values, and strategic plan. ' +
+            'Aided in the recruitment, interviewing, and onboarding of an Executive Director and Communications Director. ' +
+            'Organized and advocated for expanded public transportation at the 2024 and 2025 Annual Meetings, engaging key stakeholders and citizens from across Ohio.',
         images: [aaoCar1.src, aaoCar2.src, aaoCar3.src, aaoCar4.src],
         buttonLink: 'https://allaboardohio.org',
         buttonText: 'All Aboard Ohio ⧉',
@@ -101,6 +87,18 @@ export const experiences: Experience[] = [
         organization: 'The Ohio State University',
         department: 'College of Engineering',
         dates: 'Class of 2021',
-        description: 'DESCRIPTION',
+        description: '🚧Description coming soon.',
+    },
+    {
+        id: 5,
+        image: jpmcImg,
+        color: '#996c48',
+        imageAlt: 'JPMorgan Chase',
+        title: 'Intern',
+        organization: 'JPMorgan Chase',
+        department: 'Software Engineering Program (SEP)',
+        dates: 'Summer of 2020, Summer of 2021',
+        description: 'Summer of 2020: Developed a mobile and web application system enabling seamless, one-time customer authentication across all bank branch applications, earning recognition from Chase’s Innovation Lab. ' +
+            'Summer of 2021: Collaborated on a mobile application project for Experience Columbus, a local non-profit supported by the firm during the COVID-19 pandemic.',
     }
 ];

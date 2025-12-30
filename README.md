@@ -1,8 +1,6 @@
 # [sujankakumanu.com](https://sujankakumanu.com)
 
-Personal portfolio and professional showcase built with **Astro**, **Vue.js**, and **CSS**. This site is designed to be a high-performance, minimalist hub for my software engineering projects and academic background.
-
-[Image of Astro Island Architecture]
+Personal portfolio built with **Astro**, **Vue.js**, and **CSS**. This site is designed to be a hub for my software engineering projects and academic background.
 
 ## 🚀 Tech Stack
 
@@ -10,11 +8,11 @@ Personal portfolio and professional showcase built with **Astro**, **Vue.js**, a
 * **Hybrid Components:** 
   * **Static UI:** Built with standard HTML/Astro components for instant loading.
   * **Interactive UI:** Built with [Vue.js 3](https://vuejs.org/) to handle state-driven interactions. Shout-out to my software engineering experience at JPMC!
-* **Styling:** Custom CSS with a focus on typography and responsive grid layouts.
+* **Styling:** Custom CSS with a focus on typography and responsive layouts.
 * **Deployment:** GitHub Actions to GitHub Pages.
 * **Fonts:** IBM Plex Serif, IBM Plex Mono, and Inter.
 
-## 📂 Project Structure.
+## 📂 Project Structure
 
 Most of the code lives in the `/portfolio` subdirectory.
 
