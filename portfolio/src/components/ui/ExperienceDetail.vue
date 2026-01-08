@@ -12,7 +12,9 @@
       </div>
     </div>
     <div class="detail-content" :style="{ backgroundColor: experience.color || '#073072' }">
-      <div class="content-grid">
+      <ProjectsGrid v-if="experience.isProjectsGallery && experience.projects" :projects="experience.projects" />
+
+      <div v-else class="content-grid">
         <div class="left-column">
           <div v-if="experience.description" class="section">
             <h3>About</h3>
@@ -20,14 +22,13 @@
           </div>
 
           <a
-              v-if="experience.buttonLink"
-              :href="experience.buttonLink"
-              target="_blank"
-              class="action-button"
+            v-if="experience.buttonLink"
+            :href="experience.buttonLink"
+            target="_blank"
+            class="action-button"
           >
             {{ experience.buttonText || 'Learn More' }}
           </a>
-
           <div v-if="experience.skills && experience.skills.length" class="section">
             <h3>Skills</h3>
             <div class="skills-tags">
@@ -37,7 +38,6 @@
             </div>
           </div>
         </div>
-
         <div v-if="experience.images && experience.images.length" class="right-column">
           <div class="carousel-container">
             <div class="carousel">
@@ -68,6 +68,7 @@
 
 <script setup>
 import { ref } from 'vue';
+import ProjectsGrid from './ProjectsGrid.vue';
 
 const props = defineProps({
   experience: {
@@ -144,7 +145,7 @@ const previousImage = () => {
 }
 
 .detail-content {
-  padding: 0rem 6rem 4rem 6rem;
+  padding: 0 6rem 4rem 6rem;
   color: #fff;
 }
 
@@ -164,37 +165,29 @@ const previousImage = () => {
 .right-column {
   display: flex;
   justify-content: center;
-  align-items: flex-start;
   position: sticky;
   top: 2rem;
 }
 
-.section {
-  margin-bottom: 0;
-}
-
 .section h3 {
-  margin-bottom: 1rem;
-  margin-top: 0;
+  margin: 0 0 1rem 0;
 }
 
 .section p {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 1rem;
-  line-height: 1.7;
   margin: 0;
+  line-height: 1.7;
 }
 
-p.about {
+.about {
   font-family: 'Inter', sans-serif;
 }
 
 .carousel-container {
+  width: 100%;
+  max-width: 400px;
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  width: 100%;
-  max-width: 400px;
 }
 
 .carousel {
@@ -204,8 +197,6 @@ p.about {
   background: rgba(255, 255, 255, 0.1);
   border-radius: 12px;
   overflow: hidden;
-  max-width: 400px;
-  max-height: 400px;
 }
 
 .carousel-image {
@@ -233,16 +224,14 @@ p.about {
   font-size: 1.5rem;
   width: 40px;
   height: 40px;
+  border-radius: 50%;
   cursor: pointer;
-  transition: all 0.2s ease-out;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  transition: background 0.2s ease-out;
   pointer-events: auto;
 }
 
 .carousel-arrow:hover {
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.3);
 }
 
 .carousel-tracker {
@@ -278,15 +267,12 @@ p.about {
 
 .action-button {
   font-family: 'IBM Plex Mono', monospace;
-  display: inline-block;
   padding: 0.75rem 2rem;
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.3);
   color: #fff;
-  text-align: center;
   text-decoration: none;
   border-radius: 8px;
-  font-size: 1rem;
   transition: all 0.2s ease-out;
   width: fit-content;
 }
@@ -297,7 +283,6 @@ p.about {
 }
 
 .skills-tags {
-  font-family: 'IBM Plex Mono', monospace;
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
@@ -305,6 +290,7 @@ p.about {
 
 .skill-tag {
   background: rgba(255, 255, 255, 0.15);
+  font-family: 'IBM Plex Mono', monospace;
   color: #fff;
   padding: 0.5rem 1rem;
   border-radius: 6px;
@@ -321,34 +307,26 @@ p.about {
 
   .right-column {
     position: static;
-    justify-content: center;
   }
 
   .carousel-container {
     max-width: 500px;
-  }
-
-  .carousel {
-    max-width: 500px;
-    max-height: 500px;
   }
 }
 
 @media (max-width: 768px) {
   .detail-hero {
     padding: 4rem 2rem 2rem 2rem;
-    min-height: 250px;
   }
 
   .back-button {
     top: 1.5rem;
     left: 2rem;
     font-size: 1.25rem;
-    z-index: 10;
   }
 
   .detail-content {
-    padding: 0rem 2rem 2rem 2rem;
+    padding: 0 2rem 2rem 2rem;
   }
 
   .content-grid {
@@ -357,11 +335,6 @@ p.about {
 
   .carousel-container {
     max-width: 100%;
-  }
-
-  .carousel {
-    max-width: 100%;
-    max-height: 400px;
   }
 }
 </style>

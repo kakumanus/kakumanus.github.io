@@ -1,10 +1,10 @@
 ---
 ---
-
 <header class="header" id="main-header">
     <div class="header-content">
         <h1><a href="#" class="exclude-style">Sujan Kakumanu</a></h1>
-        <nav>
+        <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">☰</button>
+        <nav id="nav-menu">
             <h3><a href="#about">About</a></h3>
             <h3><a href="#experience">Experience</a></h3>
         </nav>
@@ -35,6 +35,7 @@
         justify-content: space-between;
         align-items: center;
         padding: 1rem 2rem;
+        position: relative;
     }
 
     h1 {
@@ -43,9 +44,19 @@
         color: #073072;
         text-decoration: underline 4px #073072;
     }
+
     h1 a.exclude-style {
-        color: #073072; /* Match your h1 color */
+        color: #073072;
         text-decoration: underline 4px #073072;
+    }
+
+    .menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        font-size: 1.8rem;
+        color: #073072;
+        cursor: pointer;
     }
 
     nav {
@@ -68,16 +79,45 @@
     }
 
     @media (max-width: 768px) {
-        .header-content {
-            padding: 1rem 2rem;
+        .menu-toggle {
+            display: block;
         }
 
         nav {
-            gap: 1rem;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: #f5f5f5;
+            border: 1px solid #e0e0e0;
+            border-top: none;
+            flex-direction: column;
+            gap: 0;
+            width: 200px;
+            display: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        nav.open {
+            display: flex;
+        }
+
+        nav h3 {
+            margin: 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        nav h3:last-child {
+            border-bottom: none;
         }
 
         nav a {
-            font-size: 0.9rem;
+            display: block;
+            padding: 1rem 1.5rem;
+            border-bottom: none;
+        }
+
+        nav a:hover {
+            background: #e8f2ff;
         }
     }
 </style>
@@ -85,21 +125,23 @@
 <script>
     const header = document.getElementById('main-header');
     const introSection = document.querySelector('.intro');
+    const menuToggle = document.getElementById('menu-toggle');
+    const navMenu = document.getElementById('nav-menu');
 
+    // Sticky header
     if (header && introSection) {
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach(entry => {
-                    if (!entry.isIntersecting) {
-                        header.classList.add('visible');
-                    } else {
-                        header.classList.remove('visible');
-                    }
-                });
-            },
+        new IntersectionObserver(
+            ([entry]) => header.classList.toggle('visible', !entry.isIntersecting),
             { threshold: 0 }
-        );
-
-        observer.observe(introSection);
+        ).observe(introSection);
     }
+
+    // Mobile menu
+    menuToggle?.addEventListener('click', () => navMenu.classList.toggle('open'));
+    navMenu?.addEventListener('click', (e) => {
+        if (e.target.tagName === 'A') navMenu.classList.remove('open');
+    });
+    document.addEventListener('click', (e) => {
+        if (!header.contains(e.target)) navMenu?.classList.remove('open');
+    });
 </script>

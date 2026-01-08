@@ -12,6 +12,17 @@ export interface Experience {
     skills?: string[];
     buttonLink?: string;
     buttonText?: string;
+    isProjectsGallery?: boolean;
+    projects?: Project[];
+}
+
+export interface Project {
+    id: number;
+    title: string;
+    description: string;
+    image: string;
+    link: string;
+    tags?: string[];
 }
 
 // Images for the tiles (high-level)
@@ -33,6 +44,10 @@ import aaoCar2 from "./assets/carousel/aao-car-2.jpg";
 import aaoCar3 from "./assets/carousel/aao-car-3.jpg";
 import aaoCar4 from "./assets/carousel/aao-car-4.jpg";
 
+import ppa from "./assets/projects/ppa.png"
+import spst from "./assets/projects/spst.png"
+import pyth from "./assets/projects/pyth.png"
+
 export const experiences: Experience[] = [
     {
         id: 1,
@@ -46,8 +61,33 @@ export const experiences: Experience[] = [
         description: 'Coursework emphasizes spatial data science and urban planning/policy, including Public Policy Analytics (predictive data science in R), Geospatial Analysis in Python, Statistical and Data Mining Methods, Community Engagement, and Housing, Community, and Economic Development (HCED).',
         skills: ['R', 'Python', 'Spatial Statistics', 'Community Engagement', 'Housing Policy'],
         images: [pennImg.src],
-        buttonLink: 'https://sujankakumanu.com/musa-portfolio',
-        buttonText: 'My MUSA Portfolio ⧉',
+        isProjectsGallery: true,
+        projects: [
+            {
+                id: 1,
+                title: 'Public Policy Analytics ⧉',
+                description: '',
+                image: ppa.src,
+                link: 'https://sujankakumanu.com/musa-5080-portfolio',
+                tags: ['R', 'Quarto', 'Predictive Modeling']
+            },
+            {
+                id: 2,
+                title: 'Statistical and Data Mining Methods ⧉',
+                description: '',
+                image: spst.src,
+                link: 'https://sujankakumanu.com/MUSA-5000',
+                tags: ['R', 'Regression', 'Pattern Analysis']
+            },
+            {
+                id: 3,
+                title: 'Geospatial Analysis in Python ⧉',
+                description: 'Final project',
+                image: pyth.src,
+                link: 'https://sujankakumanu.com/urban-renewal-explorer',
+                tags: ['Python', 'Data Pipelines']
+            }
+        ],
     },
     {
         id: 2,
@@ -74,6 +114,7 @@ export const experiences: Experience[] = [
         description: 'Collaborated with board members to develop a new mission, organizational values, and strategic plan. ' +
             'Aided in the recruitment, interviewing, and onboarding of an Executive Director and Communications Director. ' +
             'Organized and advocated for expanded public transportation at the 2024 and 2025 Annual Meetings, engaging key stakeholders and citizens from across Ohio.',
+        skills: ['Nonprofits', 'Board Responsibilities', 'Advocacy'],
         images: [aaoCar1.src, aaoCar2.src, aaoCar3.src, aaoCar4.src],
         buttonLink: 'https://allaboardohio.org',
         buttonText: 'All Aboard Ohio ⧉',
@@ -87,7 +128,9 @@ export const experiences: Experience[] = [
         organization: 'The Ohio State University',
         department: 'College of Engineering',
         dates: 'Class of 2021',
-        description: '🚧Description coming soon.',
+        description: '🚧 Description coming soon.',
+        skills: ['Machine Learning', 'Data Structures', 'Algorithms', 'Systems', 'City Planning'],
+        images: [blockOImg.src],
     },
     {
         id: 5,
@@ -100,5 +143,6 @@ export const experiences: Experience[] = [
         dates: 'Summer of 2020, Summer of 2021',
         description: 'Summer of 2020: Developed a mobile and web application system enabling seamless, one-time customer authentication across all bank branch applications, earning recognition from Chase’s Innovation Lab. ' +
             'Summer of 2021: Collaborated on a mobile application project for Experience Columbus, a local non-profit supported by the firm during the COVID-19 pandemic.',
+        skills: ['React Native', 'Postgres SQL', 'Kanban', 'Vue', 'Android Dev'],
     }
 ];
