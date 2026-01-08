@@ -58,7 +58,7 @@ export const experiences: Experience[] = [
         organization: 'University of Pennsylvania',
         department: 'Weitzman School of Design',
         dates: 'Class of 2026',
-        description: 'Coursework emphasizes spatial data science and urban planning/policy, including Public Policy Analytics (predictive data science in R), Geospatial Analysis in Python, Statistical and Data Mining Methods, Community Engagement, and Housing, Community, and Economic Development (HCED).',
+        description: 'The Master of Urban Spatial Analytics (MUSA) program gave me experience in spatial data science, modeling, and visualization, while also connecting that work to real-world planning and policy challenges. To supplement my technical coursework, I took classes such as "Introduction to Housing, Community, and Economic Development" and "Community Engagement for Planners and Policy Makers", which helped me understand the social, economic, and policy context of my work. The tiles below link to my technical projects in the MUSA program.',
         skills: ['R', 'Python', 'Spatial Statistics', 'Community Engagement', 'Housing Policy'],
         images: [pennImg.src],
         isProjectsGallery: true,

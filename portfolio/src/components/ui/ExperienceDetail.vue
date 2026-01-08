@@ -11,24 +11,32 @@
         <p class="dates">{{ experience.dates }}</p>
       </div>
     </div>
+
     <div class="detail-content" :style="{ backgroundColor: experience.color || '#073072' }">
-      <ProjectsGrid v-if="experience.isProjectsGallery && experience.projects" :projects="experience.projects" />
+
+      <!-- About: always shown, once -->
+      <div v-if="experience.description" class="section about-section">
+        <h3>About</h3>
+        <p class="about">{{ experience.description }}</p>
+      </div>
+
+      <!-- Either Projects Grid OR Detailed Layout -->
+      <ProjectsGrid
+          v-if="experience.isProjectsGallery && experience.projects"
+          :projects="experience.projects"
+      />
 
       <div v-else class="content-grid">
         <div class="left-column">
-          <div v-if="experience.description" class="section">
-            <h3>About</h3>
-            <p class="about">{{ experience.description }}</p>
-          </div>
-
           <a
-            v-if="experience.buttonLink"
-            :href="experience.buttonLink"
-            target="_blank"
-            class="action-button"
+              v-if="experience.buttonLink"
+              :href="experience.buttonLink"
+              target="_blank"
+              class="action-button"
           >
             {{ experience.buttonText || 'Learn More' }}
           </a>
+
           <div v-if="experience.skills && experience.skills.length" class="section">
             <h3>Skills</h3>
             <div class="skills-tags">
@@ -38,6 +46,7 @@
             </div>
           </div>
         </div>
+
         <div v-if="experience.images && experience.images.length" class="right-column">
           <div class="carousel-container">
             <div class="carousel">
@@ -62,6 +71,7 @@
           </div>
         </div>
       </div>
+
     </div>
   </div>
 </template>
@@ -147,6 +157,11 @@ const previousImage = () => {
 .detail-content {
   padding: 0 6rem 4rem 6rem;
   color: #fff;
+}
+
+.about-section {
+  margin-bottom: 3rem;
+  max-width: 800px;
 }
 
 .content-grid {
