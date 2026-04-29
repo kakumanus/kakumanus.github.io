@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/layout/Header.astro'
 import Intro from '../components/sections/Intro.astro'
 import About from '../components/sections/About.astro'
-import ExperienceSection from "../components/sections/ExperienceSection.vue"
+import PortfolioSections from '../components/PortfolioSections.vue'
 import Footer from "../components/layout/Footer.astro";
 ---
 
@@ -12,7 +12,7 @@ import Footer from "../components/layout/Footer.astro";
 	<main>
 		<Intro />
 		<About />
-		<ExperienceSection client:load />
+		<PortfolioSections client:load />
 	</main>
 	<Footer />
 </Layout>

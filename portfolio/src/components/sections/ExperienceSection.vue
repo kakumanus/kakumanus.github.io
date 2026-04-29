@@ -1,7 +1,7 @@
 <template>
   <section class="section experience" id="experience">
     <div v-if="!selectedExperience">
-      <h2>Click below to explore my experience.</h2>
+      <h2>Explore my work and educational experience.</h2>
       <div class="experience-grid">
         <div
             v-for="exp in experiences"
@@ -22,10 +22,12 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import ExperienceTile from '../ui/ExperienceTile.vue';
 import ExperienceDetail from '../ui/ExperienceDetail.vue';
 import { experiences } from '../../constants.js'
+
+const emit = defineEmits(['expand', 'collapse']);
 
 const selectedExperience = ref(null);
 
@@ -33,6 +35,8 @@ const selectExperience = (exp) => {
   selectedExperience.value = exp;
   document.getElementById('experience')?.scrollIntoView({ behavior: 'smooth' });
 };
+
+watch(selectedExperience, (val) => emit(val ? 'expand' : 'collapse'));
 </script>
 
 <style scoped>

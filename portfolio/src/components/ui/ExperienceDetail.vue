@@ -20,13 +20,7 @@
         <p class="about">{{ experience.description }}</p>
       </div>
 
-      <!-- Either Projects Grid OR Detailed Layout -->
-      <ProjectsGrid
-          v-if="experience.isProjectsGallery && experience.projects"
-          :projects="experience.projects"
-      />
-
-      <div v-else class="content-grid">
+      <div class="content-grid">
         <div class="left-column">
           <a
               v-if="experience.buttonLink"
@@ -78,7 +72,6 @@
 
 <script setup>
 import { ref } from 'vue';
-import ProjectsGrid from './ProjectsGrid.vue';
 
 const props = defineProps({
   experience: {
