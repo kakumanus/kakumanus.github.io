@@ -1,0 +1,85 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/layout/Header.astro';
+import Footer from '../../components/layout/Footer.astro';
+import DetailView from '../../components/ui/DetailView.vue';
+import { Image } from 'astro:assets';
+import { projects, type Project } from '../../constants';
+
+// One page per project with a hosted report
+export function getStaticPaths() {
+    return projects
+        .filter(p => p.report)
+        .map(project => ({ params: { slug: project.report!.slug }, props: { project } }));
+}
+
+const { project } = Astro.props as { project: Project };
+const report = project.report!;
+const color = project.color ?? '#073072';
+---
+
+<Layout title={`${project.title} | Sujan Kakumanu`} noindex={!report.indexed}>
+    <Header />
+    <main>
+        <section class="report">
+            <DetailView
+                title={report.heading ?? project.title}
+                subtitles={[project.subtitle]}
+                dates={report.dates}
+                description={project.description}
+                tags={project.tags}
+                color={color}
+                backHref="/#projects"
+            >
+                <!-- Desktop: inline viewer. Mobile browsers render embedded PDFs poorly, so show the cover instead. -->
+                <iframe src={report.pdf} title={`${project.title} (PDF)`} class="viewer"></iframe>
+                {project.image && (
+                    <a href={report.pdf} class="cover">
+                        <Image src={project.image} alt={`${project.imageAlt ?? project.title} (opens PDF)`} />
+                    </a>
+                )}
+            </DetailView>
+        </section>
+    </main>
+    <Footer />
+</Layout>
+
+<style>
+    /* Matches the home page sections; extra top padding clears the fixed header */
+    .report {
+        background: #f5f5f5;
+        padding-top: 6rem;
+    }
+
+    .viewer {
+        width: 100%;
+        height: 85vh;
+        border: none;
+        border-radius: 12px;
+        background: #fff;
+    }
+
+    .cover {
+        display: none;
+    }
+
+    @media (max-width: 768px) {
+        .report {
+            padding: 5rem 1.5rem 2rem;
+        }
+
+        .viewer {
+            display: none;
+        }
+
+        .cover {
+            display: block;
+        }
+
+        .cover img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+        }
+    }
+</style>

@@ -2,11 +2,13 @@
 interface Props {
 	title?: string;
 	description?: string;
+	noindex?: boolean;
 }
 
 const {
 	title = "Sujan Kakumanu",
-	description = "Urban data scientist. Advocate. Software engineer."
+	description = "Urban data scientist. Advocate. Software engineer.",
+	noindex = false
 } = Astro.props;
 
 const ogImage = "/og-img.jpg";
@@ -23,6 +25,7 @@ const siteUrl = "https://sujankakumanu.com";
 
 	<!-- SEO Meta Tags -->
 	<meta name="description" content={description} />
+	{noindex && <meta name="robots" content="noindex, nofollow" />}
 
 	<!-- Open Graph / Facebook -->
 	<meta property="og:type" content="website" />
