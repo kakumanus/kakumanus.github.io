@@ -1,5 +1,5 @@
 <template>
-  <section class="section experience" id="experience">
+  <section class="section experience" id="experience" ref="sectionRef">
     <div v-if="!selectedExperience">
       <h2>Explore my work and educational experience.</h2>
       <div class="experience-grid">
@@ -7,6 +7,7 @@
             v-for="exp in experiences"
             :key="exp.id"
             @click="selectExperience(exp)"
+            :data-experience-id="exp.id"
             class="experience-tile-wrapper"
         >
           <ExperienceTile :experience="exp" />
@@ -15,8 +16,9 @@
     </div>
     <ExperienceDetail
         v-else
+        ref="detailRef"
         :experience="selectedExperience"
-        @close="selectedExperience = null"
+        @close="closeExperience"
     />
   </section>
 </template>
@@ -26,14 +28,28 @@ import { ref, watch } from 'vue';
 import ExperienceTile from '../ui/ExperienceTile.vue';
 import ExperienceDetail from '../ui/ExperienceDetail.vue';
 import { experiences } from '../../constants.js'
+import { scrollToCenter } from '../../utils/scroll.js';
 
 const emit = defineEmits(['expand', 'collapse']);
 
 const selectedExperience = ref(null);
+const detailRef = ref(null);
+const sectionRef = ref(null);
 
 const selectExperience = (exp) => {
   selectedExperience.value = exp;
-  document.getElementById('experience')?.scrollIntoView({ behavior: 'smooth' });
+  scrollToCenter(() => detailRef.value?.$el);
+};
+
+// Return to the tile that was opened. Instant, because the Projects section
+// reappears above and shifts the page; a smooth scroll would crawl past it.
+const closeExperience = () => {
+  const id = selectedExperience.value.id;
+  selectedExperience.value = null;
+  scrollToCenter(
+      () => sectionRef.value?.querySelector(`[data-experience-id="${id}"]`),
+      'instant'
+  );
 };
 
 watch(selectedExperience, (val) => emit(val ? 'expand' : 'collapse'));
@@ -74,9 +90,20 @@ watch(selectedExperience, (val) => emit(val ? 'expand' : 'collapse'));
     padding: 2rem 1.5rem;
   }
 
+  /* Mobile: horizontal swipe carousel */
   .experience-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 1.5rem;
+    margin-inline: -1.5rem; /* bleed to screen edges */
+    padding: 0.5rem 1.5rem 1rem;
+  }
+
+  .experience-tile-wrapper {
+    flex: 0 0 82%; /* next card peeks in */
+    scroll-snap-align: start;
   }
 }
 </style>
