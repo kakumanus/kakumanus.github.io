@@ -1,0 +1,3 @@
+User-agent: *
+# Report PDFs are shared via noindexed viewer pages, not search.
+Disallow: /reports/
