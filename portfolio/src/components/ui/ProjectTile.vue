@@ -1,10 +1,15 @@
 <template>
-  <div class="project-tile">
-    <img :src="project.image.src" :alt="project.imageAlt" class="background-image" />
+  <div
+      class="project-tile"
+      :class="{ featured: project.featured }"
+      :style="{ backgroundColor: project.color || '#073072' }"
+  >
+    <img v-if="project.image" :src="project.image.src" :alt="project.imageAlt" class="background-image" />
     <div class="overlay"></div>
     <div class="content">
       <h3>{{ project.title }}</h3>
       <p class="subtitle">{{ project.subtitle }}</p>
+      <p v-if="project.featured" class="description">{{ project.description }}</p>
       <div class="tags">
         <span v-for="tag in project.tags.slice(0, 3)" :key="tag" class="tag">{{ tag }}</span>
       </div>
@@ -25,7 +30,7 @@ defineProps({
 .project-tile {
   position: relative;
   width: 100%;
-  padding-bottom: 100%;
+  aspect-ratio: 1;
   border-radius: 24px;
   overflow: hidden;
   color: #fff;
@@ -85,6 +90,42 @@ h3 {
   margin-top: 0.25rem;
 }
 
+.description {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 0.25rem 0 0 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Featured: fills its larger grid area and lets the visual show through */
+.featured {
+  aspect-ratio: auto;
+  height: 100%;
+  min-height: 16rem; /* fallback if filtered into a row by itself */
+}
+
+@media (max-width: 968px) {
+  .featured {
+    aspect-ratio: 2 / 1;
+    height: auto;
+  }
+}
+
+.featured .background-image {
+  filter: blur(1px);
+}
+
+.featured .overlay {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 30%, rgba(0, 0, 0, 0.3));
+}
+
+.featured h3 {
+  font-size: 1.5rem;
+}
+
 .tag {
   font-family: 'IBM Plex Mono', monospace;
   font-size: 0.7rem;
@@ -98,6 +139,15 @@ h3 {
 @media (max-width: 768px) {
   .content {
     padding: 2rem;
+  }
+
+  .featured {
+    aspect-ratio: 1;
+    height: auto;
+  }
+
+  .featured .description {
+    display: none;
   }
 
   h3 {

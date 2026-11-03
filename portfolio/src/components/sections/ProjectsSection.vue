@@ -1,52 +1,43 @@
 <template>
   <section class="section projects" id="projects">
-    <div v-if="!selectedProject">
-      <h2>Here are some projects I want to share with you.</h2>
+    <h2>Here are some projects I want to share with you.</h2>
 
-      <div class="filter-row" ref="dropdownRef">
-        <span class="filter-label">Filter by</span>
-        <div class="filter-dropdown">
-          <button class="dropdown-trigger" @click="dropdownOpen = !dropdownOpen">
-            <span class="trigger-text">{{ triggerLabel }}</span>
-            <span class="trigger-arrow" :class="{ open: dropdownOpen }">▾</span>
-          </button>
-          <div v-if="dropdownOpen" class="dropdown-panel">
-            <label v-for="tag in allTags" :key="tag" class="checkbox-item">
-              <input type="checkbox" :value="tag" v-model="activeTags" class="checkbox" />
-              <span class="checkbox-label">{{ tag }}</span>
-            </label>
-          </div>
-        </div>
-      </div>
-
-      <div class="projects-grid">
-        <div
-            v-for="project in filteredProjects"
-            :key="project.id"
-            @click="selectProject(project)"
-            class="project-tile-wrapper"
-        >
-          <ProjectTile :project="project" />
+    <div class="filter-row" ref="dropdownRef">
+      <span class="filter-label">Filter by</span>
+      <div class="filter-dropdown">
+        <button class="dropdown-trigger" @click="dropdownOpen = !dropdownOpen">
+          <span class="trigger-text">{{ triggerLabel }}</span>
+          <span class="trigger-arrow" :class="{ open: dropdownOpen }">▾</span>
+        </button>
+        <div v-if="dropdownOpen" class="dropdown-panel">
+          <label v-for="tag in allTags" :key="tag" class="checkbox-item">
+            <input type="checkbox" :value="tag" v-model="activeTags" class="checkbox" />
+            <span class="checkbox-label">{{ tag }}</span>
+          </label>
         </div>
       </div>
     </div>
-    <ProjectDetail
-        v-else
-        :project="selectedProject"
-        @close="selectedProject = null"
-    />
+
+    <div class="projects-grid">
+      <component
+          :is="projectHref(project) ? 'a' : 'div'"
+          v-for="project in filteredProjects"
+          :key="project.id"
+          :href="projectHref(project)"
+          class="project-tile-wrapper"
+          :class="{ featured: project.featured }"
+      >
+        <ProjectTile :project="project" />
+      </component>
+    </div>
   </section>
 </template>
 
 <script setup>
-import { ref, computed, watch, onMounted, onUnmounted } from 'vue';
+import { ref, computed, onMounted, onUnmounted } from 'vue';
 import ProjectTile from '../ui/ProjectTile.vue';
-import ProjectDetail from '../ui/ProjectDetail.vue';
-import { projects } from '../../constants.js';
+import { projects, projectHref } from '../../constants.js';
 
-const emit = defineEmits(['expand', 'collapse']);
-
-const selectedProject = ref(null);
 const activeTags = ref([]);
 const dropdownOpen = ref(false);
 const dropdownRef = ref(null);
@@ -60,15 +51,10 @@ const triggerLabel = computed(() => {
 });
 
 const filteredProjects = computed(() =>
-    activeTags.value.length === 0
-        ? projects
-        : projects.filter(p => activeTags.value.some(tag => p.tags.includes(tag)))
+    projects
+        .filter(p => activeTags.value.length === 0 || activeTags.value.some(tag => p.tags.includes(tag)))
+        .sort((a, b) => Number(!!b.featured) - Number(!!a.featured))
 );
-
-const selectProject = (project) => {
-  selectedProject.value = project;
-  document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
-};
 
 const handleClickOutside = (e) => {
   if (dropdownRef.value && !dropdownRef.value.contains(e.target)) {
@@ -78,8 +64,6 @@ const handleClickOutside = (e) => {
 
 onMounted(() => document.addEventListener('click', handleClickOutside));
 onUnmounted(() => document.removeEventListener('click', handleClickOutside));
-
-watch(selectedProject, (val) => emit(val ? 'expand' : 'collapse'));
 </script>
 
 <style scoped>
@@ -182,15 +166,24 @@ watch(selectedProject, (val) => emit(val ? 'expand' : 'collapse'));
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  grid-auto-flow: dense;
   gap: 2rem;
 }
 
+.project-tile-wrapper.featured {
+  grid-column: span 2;
+}
+
 .project-tile-wrapper {
-  cursor: pointer;
+  display: block;
+  color: inherit;
+  text-decoration: none;
   transition: filter 0.3s ease-out;
 }
 
-.project-tile-wrapper:hover {
+/* Only tiles with a link are interactive */
+.project-tile-wrapper[href]:hover,
+.project-tile-wrapper[href]:focus-visible {
   filter: drop-shadow(0 0 20px rgba(7, 48, 114, 0.6));
 }
 
@@ -209,9 +202,20 @@ watch(selectedProject, (val) => emit(val ? 'expand' : 'collapse'));
     padding: 2rem 1.5rem;
   }
 
+  /* Mobile: horizontal swipe carousel */
   .projects-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 1.5rem;
+    margin-inline: -1.5rem; /* bleed to screen edges */
+    padding: 0.5rem 1.5rem 1rem;
+  }
+
+  .project-tile-wrapper {
+    flex: 0 0 82%; /* next card peeks in */
+    scroll-snap-align: start;
   }
 }
 </style>
